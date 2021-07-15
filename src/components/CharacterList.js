@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { BrowserRouter as Router,Link } from 'react-router-dom';
 import axios from 'axios';
 
 class CharacterList extends Component {
@@ -27,13 +27,18 @@ class CharacterList extends Component {
         { isLoading ? 'Loading...' : '' }
         {
           !isLoading ? this.state.characters.map(character =>
-                <div key={ character.id } className="characterCard">
+                <Link key={ character.id } to={`/character/${character.id}`} >
+                  <div className="characterCard">
                     <img src={ character.image }/>
-                    <div className="grid-item">
-                        { character.name } -  { character.status }-{ character.type }
-                        { character.gender } -  { character.location.name }
-                    </div> 
-                </div>
+                    <ul className="grid-item">
+                        <li><b>Name: </b> {character.name }</li>
+                        <li><b>Gender: </b>{character.gender }</li>
+                        <li><b>Status: </b>{character.status }</li>
+                        <li><b>Type: </b>{character.type }</li>
+                        <li><b>Location: </b>{character.location.name }</li>
+                    </ul> 
+                  </div>
+                </Link>
             ) : null
         }
       </div>
