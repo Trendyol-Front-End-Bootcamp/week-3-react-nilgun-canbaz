@@ -9,7 +9,7 @@ class CharacterList extends Component {
     gender:null,
     status:null
   };
-
+  // Data is pulled from api when the page is first loaded
 	componentDidMount() {
     axios.get('https://rickandmortyapi.com/api/character')
     .then(characters => characters.data.results)
@@ -20,6 +20,7 @@ class CharacterList extends Component {
 				});
 			});
 	}
+  // After using the filter on the page, the data is retrieved from the api
   componentDidUpdate() {
     axios.get('https://rickandmortyapi.com/api/character', {params: {
       gender: this.state.gender,

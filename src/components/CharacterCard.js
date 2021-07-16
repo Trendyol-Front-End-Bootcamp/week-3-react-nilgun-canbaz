@@ -9,6 +9,7 @@ class CharacterPage extends Component {
         episodes: [],
         location: null    
     } 
+    // Data is pulled from api when the page is first loaded
 	componentDidMount() {
         axios.get('https://rickandmortyapi.com/api/character/'+this.props.characterId)
         .then(res => {
@@ -18,7 +19,7 @@ class CharacterPage extends Component {
             this.setState({ data,episodes,location });
           })		
 	}
-
+    // Data from API is rendered
 	render() {
         return (
             <div>

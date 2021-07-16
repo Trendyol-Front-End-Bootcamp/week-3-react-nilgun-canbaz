@@ -5,7 +5,8 @@ class Episodes extends Component {
 
     state = {
         data : [] 
-    } 
+    }
+    //Data is pulled from api for partitions
 	componentDidMount() {
         axios.get('https://rickandmortyapi.com/api/episode/'+this.props.episodeId)
         .then(res => {
