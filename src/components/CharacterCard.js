@@ -7,7 +7,7 @@ class CharacterPage extends Component {
     state = {
         data : [],
         episodes: [],
-        location: []    
+        location: null    
     } 
 	componentDidMount() {
         axios.get('https://rickandmortyapi.com/api/character/'+this.props.characterId)
@@ -22,12 +22,12 @@ class CharacterPage extends Component {
 	render() {
         return (
             <div>
+                <img alt={this.state.data.name} src={this.state.data.image}/>
                 <ul>
-                    <li><img src={this.state.data.image}/></li>
-                    <li><b>Name:</b> {this.state.data.name}</li>
+                    <h2><b>{this.state.data.name}</b> </h2>
                     <li><b>Gender:</b> {this.state.data.gender}</li>
                     <li><b>Status:</b> {this.state.data.status}</li>
-                    <li><b>Type:</b> {this.state.data.type}</li>
+                    <li><b>Type:</b> {this.state.data.type ? this.state.data.type  : '-'} </li>
                     <li><b>Location:</b> {this.state.location}</li>
                     <li>
                         <b>Last 5 Episodes :</b>  

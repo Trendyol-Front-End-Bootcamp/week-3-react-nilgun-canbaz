@@ -2,7 +2,7 @@ import CharacterList from "../components/CharacterList";
 
 function Home() {
   return (
-    <div className="App">
+    <div className="homePage">
       <CharacterList/>
     </div>
   );

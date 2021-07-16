@@ -1,21 +1,56 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffc700 ; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 body {
   margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Roboto Condensed', sans-serif;
 }
+a{text-decoration: none;}
+select:focus > option:checked { 
+  background-color:#121417 ;
+}
+select.decorated option:hover {
+  box-shadow: 0 0 10px 100px #121417  inset;
+}
+h1 {margin:0; padding: 0.67em 0 ; background-color: #ffc700;}
+ul { list-style-type: none;padding-inline-start: 1em; margin:0}
 .navbar{text-align: center;}
-.CharacterList {
-  display: grid;
-  grid-template-columns: auto auto auto;
-}
-.characterCard{
-  padding: 20px;
-}
+h2{color:#121417}
+.CharacterList {display: grid;grid-template-columns: auto auto auto auto;padding:20px 0}
+.characterCard:hover{box-shadow: 5px 5px 13px 0px #121417;}
+.homePage h2{text-align: center;}
+.homePage {background-color: #121417;}
+.characterCard{width: 300px; margin: 0 auto;background-color: #dddddd ;color: #121417;border-radius: 0 20px;margin-bottom: 20px;padding-bottom: 1em;}
+.characterCard:hover{box-shadow: 5px 5px 13px 0px #636363;}
+.characterCard img{border-radius: 0 20px;}
+
+.filter{position: absolute; top:20px;margin-left:17px}
+.filter select{margin-left: 20px; width:140px;height: 40px;border-radius:10px;background: #121417 ;color: #fff; font-weight: bold;border:none; }
+
+.characterPage{background-color: #121417;    padding: 50px 0; }
+.characterPage>div{ display: grid;grid-template-columns: auto auto;background-color: #dddddd ;color: #121417;border-radius:20px 0;margin: auto;
+  width: 650px;}
+.characterPage img{border-radius:20px 0;}
+.backHome svg{    position: absolute;  top: 0px;border: 1px solid #fff ;  border-radius: 50%;  margin: 15px 0 0 15px;fill: #fff ;}
