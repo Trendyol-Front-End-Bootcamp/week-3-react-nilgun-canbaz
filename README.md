@@ -1,7 +1,7 @@
 # Trendyol Front End Bootcamp Week 3 - Rick & Morty Api ReactJS Project
 
 # Preview
-
+<img src='https://github.com/Trendyol-Front-End-Bootcamp/week-3-react-nilgun-canbaz/blob/main/image/preview.gif' alt='Rick and Morty Api'/>
 
 # About Project 
 It's a frontend project working on The Rick & Morty API data.
