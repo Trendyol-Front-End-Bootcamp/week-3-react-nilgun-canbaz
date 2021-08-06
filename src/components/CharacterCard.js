@@ -5,22 +5,28 @@ import Episode from './Episode';
 class CharacterPage extends Component {
 
     state = {
+        isLoading: true,
         data : [],
         episodes: [],
         location: null    
     } 
-    // Data is pulled from api when the page is first loaded
-	componentDidMount() {
+    getCharacterDetails = () =>{
         axios.get('https://rickandmortyapi.com/api/character/'+this.props.characterId)
         .then(res => {
             const data = res.data;
             const episodes = res.data.episode;
             const location = res.data.location.name;
-            this.setState({ data,episodes,location });
-          })		
+            this.setState({ data,episodes,location, isLoading: false, });
+        })
+        .catch((err)=>err);		
+    }
+    // Data is pulled from api when the page is first loaded
+	componentDidMount() {
+       this.getCharacterDetails();
 	}
     // Data from API is rendered
 	render() {
+        const { isLoading } = this.state;
         return (
             <div>
                 <img alt={this.state.data.name} src={this.state.data.image}/>
@@ -32,7 +38,8 @@ class CharacterPage extends Component {
                     <li><b>Location:</b> {this.state.location}</li>
                     <li>
                         <b>Last 5 Episodes :</b>  
-                        {this.state.episodes.slice(-5).map(episode => <Episode key ={episode} episodeId={episode.split('/')[5]}/>) }
+                        { isLoading && 'Loading...' } 
+                        {!isLoading && this.state.episodes.slice(-5).map(episode => <Episode key ={episode} episodeId={episode.split('/')[5]}/>) }
                     </li>
                 </ul>
             </div>

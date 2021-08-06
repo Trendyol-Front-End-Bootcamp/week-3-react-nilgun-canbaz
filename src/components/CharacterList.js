@@ -9,30 +9,29 @@ class CharacterList extends Component {
     gender:null,
     status:null
   };
-  // Data is pulled from api when the page is first loaded
-	componentDidMount() {
-    axios.get('https://rickandmortyapi.com/api/character')
-    .then(characters => characters.data.results)
-			.then(characters => {
-				this.setState({
-          characters,
-					isLoading: false,
-				});
-			});
-	}
-  // After using the filter on the page, the data is retrieved from the api
-  componentDidUpdate() {
+  getCharacters = () =>{
+  
     axios.get('https://rickandmortyapi.com/api/character', {params: {
       gender: this.state.gender,
       status: this.state.status
       }})
-    .then(characters => characters.data.results)
-			.then(characters => {
-				this.setState({
-          characters,
-					isLoading: false,
-				});
-			});
+    .then(response => response.data.results)
+    .then(characters => {
+      this.setState({
+        characters,
+        isLoading: false,
+      });
+    })
+    .catch((err)=>err);
+    
+  }
+  // Data is pulled from api when the page is first loaded
+	componentDidMount() {
+    this.getCharacters();
+	}
+  // After using the filter on the page, the data is retrieved from the api
+  componentDidUpdate() {
+    this.getCharacters();
 	}
 
 	render() {
@@ -55,9 +54,9 @@ class CharacterList extends Component {
               <option value="unknown">Unknown</option>
             </select>
           </div>
-        { isLoading ? 'Loading...' : '' }
+        { isLoading && 'Loading...' }
         {
-          !isLoading ? this.state.characters.map(character =>
+          !isLoading && this.state.characters.map(character =>
             <Link key={ character.id } to={`/character/${character.id}`} >
               <div className="characterCard">
                 <img alt={character.name } src={ character.image }/>
@@ -70,7 +69,7 @@ class CharacterList extends Component {
                 </ul> 
               </div>
             </Link>
-            ) : null
+            )
         }
       </div>
     );
